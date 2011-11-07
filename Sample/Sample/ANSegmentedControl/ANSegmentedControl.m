@@ -22,9 +22,12 @@
 
 - (id)initWithStart:(int)begin end:(int)end
 {
-    [super init];
-    start = begin;
-    range = end - begin;
+    self = [super init];
+    if( self )
+    {
+        start = begin;
+        range = end - begin;
+    }
     return self;
 }
 
@@ -129,11 +132,12 @@
     if ([[self window] isKeyWindow]) {
         gradient = [[NSGradient alloc] initWithStartingColor:[NSColor colorWithCalibratedWhite:.75 alpha:1.0]
                                                  endingColor:[NSColor colorWithCalibratedWhite:.6 alpha:1.0]];
-        frameColor = [[NSColor colorWithCalibratedWhite:.37 alpha:1.0] retain];
+        
+        frameColor = [NSColor colorWithCalibratedWhite:.37 alpha:1.0] ;
     } else {
         gradient = [[NSGradient alloc] initWithStartingColor:[NSColor colorWithCalibratedWhite:.8 alpha:1.0]
                                                  endingColor:[NSColor colorWithCalibratedWhite:.77 alpha:1.0]];
-        frameColor = [[NSColor colorWithCalibratedWhite:.68 alpha:1.0] retain];
+        frameColor = [NSColor colorWithCalibratedWhite:.68 alpha:1.0] ;
     }
     
     // シャドウ
@@ -163,6 +167,8 @@
                  withView:self];
         segmentRect.origin.x += segmentWidth;
     }
+    [gradient release];
+    [dropShadow release];
 }
 
 - (void)drawKnob:(NSRect)rect
@@ -176,12 +182,12 @@
         gradient = [[NSGradient alloc] initWithStartingColor:[NSColor colorWithCalibratedWhite:.68 alpha:1.0]
                                                  endingColor:[NSColor colorWithCalibratedWhite:.91 alpha:1.0]];   
         imageFraction = 1.0;
-        frameColor = [[NSColor colorWithCalibratedWhite:.37 alpha:1.0] retain];
+        frameColor = [NSColor colorWithCalibratedWhite:.37 alpha:1.0] ;
     } else {
         gradient = [[NSGradient alloc] initWithStartingColor:[NSColor colorWithCalibratedWhite:.76 alpha:1.0]
                                                  endingColor:[NSColor colorWithCalibratedWhite:.90 alpha:1.0]];   
         imageFraction = .25; 
-        frameColor = [[NSColor colorWithCalibratedWhite:.68 alpha:1.0] retain];
+        frameColor = [NSColor colorWithCalibratedWhite:.68 alpha:1.0] ;
     }
     
     CGFloat width = rect.size.width / [self segmentCount];
@@ -207,6 +213,7 @@
                                          fraction:imageFraction
                                    respectFlipped:YES
                                             hints:nil];
+    [gradient release];
 }
 
 - (void)animateTo:(int)x

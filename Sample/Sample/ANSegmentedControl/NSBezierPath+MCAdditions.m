@@ -8,7 +8,7 @@
 #import "NSBezierPath+MCAdditions.h"
 
 // remove/comment out this line of you don't want to use undocumented functions
-#define MCBEZIER_USE_PRIVATE_FUNCTION
+//#define MCBEZIER_USE_PRIVATE_FUNCTION
 
 #ifdef MCBEZIER_USE_PRIVATE_FUNCTION
 extern CGPathRef CGContextCopyPath(CGContextRef context);

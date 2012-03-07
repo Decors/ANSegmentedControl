@@ -15,5 +15,7 @@
 }
 
 -(void)setSelectedSegment:(NSInteger)newSegment animate:(bool)animate;
+@property CGFloat fastAnimationDuration;
+@property CGFloat slowAnimationDuration;
 
 @end

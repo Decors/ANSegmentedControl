@@ -343,6 +343,7 @@
                     
                     [self setSelectedSegment:newSegment];
                     [[self window] invalidateCursorRectsForView:self];
+                    [self sendAction:[self action] to:[self target]];
                     
                     break;
                 default:
